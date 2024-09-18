@@ -1,0 +1,39 @@
+@PACKAGE_INIT@
+
+
+include("${CMAKE_CURRENT_LIST_DIR}/zed_open_captureTargets.cmake")
+
+
+
+check_required_components(zed_open_capture)
+include(CMakeFindDependencyMacro)
+
+
+list(INSERT CMAKE_MODULE_PATH 0 "~/zed2_open_capture/zed-open-capture/cmake")
+
+message(STATUS "CMAKE_MODULE_PATH: ${CMAKE_MODULE_PATH}")
+message(STATUS "CMAKE_SOURCE_DIR/cmake: ${CMAKE_SOURCE_DIR}/cmake")
+message(STATUS "CMAKE_CURRENT_LIST_DIR/cmake: ${CMAKE_CURRENT_LIST_DIR}")
+message(STATUS "CMAKE_PREFIX_PATH: ${CMAKE_PREFIX_PATH}")
+
+find_package(HIDAPI REQUIRED)
+message(STATUS "libhidapi: include dir at ${HIDAPI_INCLUDE_DIRS}")
+message(STATUS "libhidapi: libraries at ${HIDAPI_LIBRARIES}")
+message(STATUS "ERROR CHECK")
+include_directories(${HIDAPI_INCLUDE_DIRS})
+set(CMAKE_THREAD_LIBS_INIT "-lpthread")
+set(CMAKE_HAVE_THREADS_LIBRARY 1)  ###Solucion thread error
+set(CMAKE_USE_WIN32_THREADS_INIT 0)
+set(CMAKE_USE_PTHREADS_INIT 1)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+include_directories(${LibUSB_INCLUDE_DIRS})
+find_package(LIBUSB REQUIRED)
+message(STATUS "libusb: include dir at ${LibUSB_INCLUDE_DIRS}")
+message(STATUS "libusb: libraries at ${LibUSB_LIBRARIES}")
+message(STATUS "ERROR CHECK2")
+
+
+
+message(STATUS "libhidapi: include dir at ${HIDAPI_INCLUDE_DIRS}")
+message(STATUS "libhidapi: libraries at ${HIDAPI_LIBRARIES}")
+    

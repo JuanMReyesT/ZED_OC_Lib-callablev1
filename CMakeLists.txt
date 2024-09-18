@@ -1,3 +1,4 @@
+### THIS IS THE CMakeLists.txt of the zed_open_capture project, replace it 
 cmake_minimum_required(VERSION 3.1)
 
 set(PROJECT_NAME zed_open_capture)
